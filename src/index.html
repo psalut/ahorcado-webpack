@@ -1,16 +1,81 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Juego del Ahorcado</title>
+</head>
+<body>
+  <h1 class="title">Juego del Ahorcado</h1>
+
+  <div id="game-container">
+    <h2 id="word-display"></h2>
+    <p id="guesses-display"></p>
+    <p id="remaining-lives"></p>
+    <form id="guess-form">
+      <input type="text" id="guess-input" />
+      <button type="submit">Adivinar</button>
+    </form>
+  </div>
+
+  <script src="./bundle.js"></script>
+</body>
+</html> -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1 class="text-white bg-slate-900 p-5 flex items-center justify-between">
-      <span>TypeScript Webpack CSS Starter</span>
-      <a class="hover:opacity-70" href="https://codewithahsan.dev">Code With Pablooo</a>
-    </h1>
-    <script src="./bundle.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHORCADO - GROUP 4</title>
+</head>
+<body>
+  <h4 class="mainTitle">AHORCADO - GROUP 4</h4>
+  <div class="gradient-border">
+
+    <div class="container" id="mainMenuContainer">
+      <h5 class="subTitle">MAIN MENU</h5>
+      <div class="mainMenuButtons">
+        <button id="playButton"><span>Play</span></button>
+        <button id="scoreButton"><span>Score</span></button>
+        <button id="aboutUsButton"><span>About us</span>></button>
+      </div>
+    </div>
+
+    <div class="container" id="playContainer">
+      <h5 class="subTitle">GAME</h5>
+      <button class="backButton"><span>BACK</span></button>
+    </div>
+
+    <div class="container" id="scoreContainer">
+      <h5 class="subTitle">SCORE</h5>
+      <ul>
+        <li><span>Pato .......... 120pts</span></li>
+        <li><span>Lucas .......... 110pts</span></li>
+        <li><span>Pablo .......... 100pts</span></li>
+        <li><span>Pato .......... 80pts</span></li>
+        <li><span>Lucas .......... 60pts</span></li>
+        <li><span>Pablo .......... 40pts</span></li>
+        <li><span>Pato .......... 10pts</span></li>
+      </ul>
+      <button class="backButton"><span>BACK</span></button>
+    </div>
+
+    <div class="container" id="aboutUsContainer">
+      <h5 class="subTitle">ABOUT US</h5>
+      <div class="aboutUsDiv">
+        <ul>
+          <h6 style="margin-bottom: 10px">GROUP MEMBERS</h6>
+          <li>LUCAS GUERRINI - LEG: 43086</li>
+          <li>PABLO SALUT - LEG: 43086</li>
+        </ul>
+        <ul style="margin-top: 1em;">
+          <h6 style="margin-bottom: 10px">UNIVERSIDAD TECNOLÓGICA NACIONAL</h6>
+          <li>FACULTAD REGIONAL ROSARIO</li>
+          <li>METODOLOGÍAS ÁGILES</li>
+        </ul>
+      </div>
+      <button class="backButton"><span>BACK</span></button>
+    </div>
+  </div>
+
+  <script src="./bundle.js"></script>
+</body>
 </html>
