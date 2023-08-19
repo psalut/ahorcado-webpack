@@ -41,10 +41,43 @@ const remainingLives = document.getElementById('remaining-lives') as HTMLElement
 const guessForm = document.getElementById('guess-form') as HTMLFormElement;
 const guessInput = document.getElementById('guess-input') as HTMLInputElement;
 
-// Instanciar juego del Ahorcado
+const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+const ctx = canvas.getContext('2d');
+ctx.lineWidth = 5;
+ctx.strokeStyle = 'white';
+
+// HORCA
+ctx.beginPath();
+ctx.moveTo(275, 375);
+ctx.lineTo(25, 375);
+
+ctx.moveTo(50, 375);
+ctx.lineTo(50, 25);
+ctx.lineTo(75, 25);
+ctx.lineTo(75, 375);
+
+ctx.moveTo(50, 50);
+ctx.lineTo(25, 50);
+ctx.lineTo(25, 75);
+ctx.lineTo(50, 75);
+
+ctx.moveTo(75, 75);
+ctx.lineTo(250, 75);
+ctx.lineTo(250, 50);
+ctx.lineTo(75, 50);
+
+ctx.moveTo(105, 75);
+ctx.lineTo(75, 105);
+
+ctx.moveTo(75, 122);
+ctx.lineTo(122, 75);
+
+ctx.moveTo(200, 75);
+ctx.lineTo(200, 115);
+ctx.stroke();
+
 const ahorcado = new Ahorcado('palabra', 6);
 
-// Actualizar elementos HTML con el estado del juego
 function updateUI() {
   wordDisplay.textContent = ahorcado.palabra;
   guessesDisplay.textContent = ahorcado.returnLetrasArriesgadas().join(', ');
@@ -57,6 +90,7 @@ function processGuess() {
   guessInput.value = '';
 
   const resultado = ahorcado.arriesgarLetra(letraElegida);
+  console.log(resultado);
   if (typeof resultado === 'boolean') {
     if (resultado) {
       // La letra es correcta
@@ -64,9 +98,66 @@ function processGuess() {
     } else {
       // La letra es incorrecta
       console.log('Letra incorrecta, te quedan ' + ahorcado.returnVidasRestantes() + ' vidas.');
+      const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.strokeStyle = 'white';
+
+      switch (ahorcado.returnVidasRestantes()) {
+        case 5:
+          // CABEZA
+          ctx.moveTo(220, 140);
+          ctx.arc(200, 140, 20, 0, Math.PI * 2, true); // Círculo externo
+          ctx.stroke();
+        break;
+        case 4:
+          // TORSO
+          ctx.moveTo(200, 160);
+          ctx.lineTo(200, 240);
+          ctx.stroke();
+        break;
+        case 3:
+          // BRAZO DER
+          ctx.moveTo(200, 170);
+          ctx.lineTo(230, 220);
+          ctx.stroke();
+        break;
+        case 2:
+          // BRAZO IZQ
+          ctx.moveTo(200, 170);
+          ctx.lineTo(170, 220);
+          ctx.stroke();
+        break;
+        case 1:
+          // PIERNA IZQ
+          ctx.moveTo(200, 240);
+          ctx.lineTo(230, 280);
+          ctx.stroke();
+        break;
+        default:
+          break;
+      }
     }
   } else {
     // Resultado es una cadena (mensaje de error o pérdida)
+    if (resultado == "PERDISTE") {
+      const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.strokeStyle = 'white';
+
+      // PIERNA DER
+      ctx.moveTo(200, 240);
+      ctx.lineTo(170, 280);
+      ctx.stroke();
+
+      // PERDISTE
+      ctx.beginPath();
+      ctx.strokeStyle = 'red';
+      ctx.moveTo(160, 162);
+      ctx.lineTo(240, 162);
+      ctx.stroke();
+    }
     console.log(resultado);
   }
 
