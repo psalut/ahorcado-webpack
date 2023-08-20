@@ -23,13 +23,13 @@ export class Ahorcado {
 
   arriesgarLetra(letraElegida: string): boolean | string {
     if (letraElegida.length > 1) {
-      return "ingrese solo una letra";
+      return "Ingrese solo una letra.";
     }
     if (!this.esLetra(letraElegida)) {
-      return "ingrese una letra válida";
+      return "Ingrese una letra válida.";
     }
     if (this.letrasCorrectas.includes(letraElegida) || this.letrasErroneas.includes(letraElegida)) {
-      return "ingrese otra letra";
+      return "Letra ya utilizada.";
     }
 
     if (this.palabra.includes(letraElegida)) {

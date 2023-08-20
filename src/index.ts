@@ -1,5 +1,6 @@
 import "./styles/index.css";
 import { Ahorcado } from './game';
+import Swal from 'sweetalert2';
 
 // Obtener elementos HTML
 const mainMenuContainer = document.getElementById('mainMenuContainer') as HTMLElement;
@@ -108,7 +109,6 @@ function processGuess() {
       // La letra es correcta
       const guionesDibujados = dibujarGuiones('palabra', ahorcado.returnLetrasCorrectas());
       wordDisplay.textContent = guionesDibujados;
-      console.log('¡Adivinaste una letra!');
     } else {
       // La letra es incorrecta
       console.log('Letra incorrecta, te quedan ' + ahorcado.returnVidasRestantes() + ' vidas.');
@@ -171,15 +171,26 @@ function processGuess() {
       ctx.moveTo(160, 162);
       ctx.lineTo(240, 162);
       ctx.stroke();
+    } else {
+      Swal.fire({
+        title: resultado,
+        timer: 1500,
+        showConfirmButton: false,
+        timerProgressBar: true,
+      })
     }
-    console.log(resultado);
   }
 
   updateUI();
 
   // Verificar si se ha ganado o perdido el juego
   if (resultado === 'GANASTE' || resultado === 'PERDISTE') {
-    // Juego finalizado
+    Swal.fire({
+      title: resultado,
+      timer: 5000,
+      showConfirmButton: false,
+      timerProgressBar: true,
+    });
     console.log('Juego terminado');
   } else {
     // Esperar 1 segundo antes del siguiente intento
