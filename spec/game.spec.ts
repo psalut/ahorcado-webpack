@@ -81,13 +81,23 @@ describe("quiero ingresar un caracter no valido", () => {
   });
 });
 
-describe("quiero ver las letras que ya ingresé", () => {
+describe("quiero ver las letras erroneas que ya ingresé", () => {
   it("should return 'a, b, c, d'", () => {
     let game = new Ahorcado("pelota", 6);
     game.arriesgarLetra('a');
     game.arriesgarLetra('b');
     game.arriesgarLetra('c');
-    expect(game.returnLetrasArriesgadas()).toEqual(['a','b','c']);
+    expect(game.returnLetrasErroneas()).toEqual(['b','c']);
+  });
+});
+
+describe("quiero ver las letras correctas que ya ingresé", () => {
+  it("should return 'a, b, c, d'", () => {
+    let game = new Ahorcado("pelota", 6);
+    game.arriesgarLetra('a');
+    game.arriesgarLetra('b');
+    game.arriesgarLetra('c');
+    expect(game.returnLetrasCorrectas()).toEqual(['a']);
   });
 });
 

@@ -164,3 +164,19 @@ button span {
   z-index: 1;
 }
 /* END BUTTONS */
+
+#game-container {
+  min-width: 45vw;
+  text-align: center;
+}
+
+#guess-input {
+  height: 45px;
+  font-size: 30px;
+  width: 50px;
+  text-transform: uppercase;
+}
+
+#word-display {
+  font-size: 40px;
+}

@@ -78,9 +78,21 @@ ctx.stroke();
 
 const ahorcado = new Ahorcado('palabra', 6);
 
+function dibujarGuiones(palabra: string, letrasAdivinadas: string[]): string {
+  return palabra
+    .split('')
+    .map((letra) => (letrasAdivinadas.includes(letra) ? letra : '-'))
+    .join(' ');
+}
+
+const guionesDibujados = dibujarGuiones('palabra', []);
+wordDisplay.textContent = guionesDibujados;
+
 function updateUI() {
-  wordDisplay.textContent = ahorcado.palabra;
-  guessesDisplay.textContent = ahorcado.returnLetrasArriesgadas().join(', ');
+  if (ahorcado.returnLetrasErroneas().length == 0) {
+    guessesDisplay.textContent = '-';
+  }
+  guessesDisplay.textContent = ahorcado.returnLetrasErroneas().join(', ');
   remainingLives.textContent = ahorcado.returnVidasRestantes().toString();
 }
 
@@ -94,6 +106,8 @@ function processGuess() {
   if (typeof resultado === 'boolean') {
     if (resultado) {
       // La letra es correcta
+      const guionesDibujados = dibujarGuiones('palabra', ahorcado.returnLetrasCorrectas());
+      wordDisplay.textContent = guionesDibujados;
       console.log('¡Adivinaste una letra!');
     } else {
       // La letra es incorrecta
