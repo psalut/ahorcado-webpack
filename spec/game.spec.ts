@@ -60,24 +60,24 @@ describe("arriesgo 6 letras y pierdo", () => {
 });
 
 describe("quiero volver a usar una letra que ya arriesgué", () => {
-  it("should return 'ingrese otra letra'", () => {
+  it("should return 'Letra ya utilizada.'", () => {
     let game = new Ahorcado("pelota", 6);
     game.arriesgarLetra('k');
-    expect(game.arriesgarLetra('k')).toBe("ingrese otra letra");
+    expect(game.arriesgarLetra('k')).toBe("Letra ya utilizada.");
   });
 });
 
 describe("quiero ingresar dos letras a la vez", () => {
-  it("should return 'ingrese solo una letra'", () => {
+  it("should return 'Ingrese solo una letra.'", () => {
     let game = new Ahorcado("pelota", 6);
-    expect(game.arriesgarLetra('kw')).toBe("ingrese solo una letra");
+    expect(game.arriesgarLetra('kw')).toBe("Ingrese solo una letra.");
   });
 });
 
 describe("quiero ingresar un caracter no valido", () => {
-  it("should return 'ingrese una letra válida'", () => {
+  it("should return 'Ingrese una letra válida.'", () => {
     let game = new Ahorcado("pelota", 6);
-    expect(game.arriesgarLetra('3')).toBe("ingrese una letra válida");
+    expect(game.arriesgarLetra('3')).toBe("Ingrese una letra válida.");
   });
 });
 
