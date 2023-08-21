@@ -5,10 +5,14 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --mode=development --open",
+    "start-not-hot": "webpack serve --no-watch",
     "build": "webpack",
+    "help": "webpack help",
     "test": "jasmine --config=jasmine.json",
     "test:fancy": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json",
-    "coverage": "nyc npm run test && nyc report --reporter=html"
+    "coverage": "nyc npm run test && nyc report --reporter=html",
+    "acc-test": "cypress open",
+    "cypress:run": "cypress run"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +24,7 @@
     "concurrently": "^8.2.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "cypress": "^12.17.4",
     "html-webpack-plugin": "^5.5.3",
     "jasmine": "^4.1.0",
     "jasmine-console-reporter": "^3.1.0",

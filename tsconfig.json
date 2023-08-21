@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "sourceMap": true,
+    // "sourceMap": true,
     "noImplicitAny": true,
     "module": "CommonJS",
     "target": "ES2016",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "Node"
-  }
+  },    
+  "include": [
+    "src",
+    "node_modules/cypress"
+  ],
+  "exclude": [
+    "node_modules/cypress"
+  ]
 }
