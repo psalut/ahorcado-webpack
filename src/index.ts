@@ -103,7 +103,7 @@ function processGuess() {
   guessInput.value = '';
 
   const resultado = ahorcado.arriesgarLetra(letraElegida);
-  console.log(resultado);
+
   if (typeof resultado === 'boolean') {
     if (resultado) {
       // La letra es correcta
@@ -111,7 +111,6 @@ function processGuess() {
       wordDisplay.textContent = guionesDibujados;
     } else {
       // La letra es incorrecta
-      console.log('Letra incorrecta, te quedan ' + ahorcado.returnVidasRestantes() + ' vidas.');
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
       const ctx = canvas.getContext('2d');
       ctx.beginPath();
@@ -172,6 +171,8 @@ function processGuess() {
       ctx.lineTo(240, 162);
       ctx.stroke();
     } else {
+      const guionesDibujados = dibujarGuiones('palabra', ahorcado.returnLetrasCorrectas());
+      wordDisplay.textContent = guionesDibujados;
       Swal.fire({
         title: resultado,
         timer: 1500,
@@ -191,7 +192,6 @@ function processGuess() {
       showConfirmButton: false,
       timerProgressBar: true,
     });
-    console.log('Juego terminado');
   } else {
     // Esperar 1 segundo antes del siguiente intento
     setTimeout(() => {

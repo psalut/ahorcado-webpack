@@ -4,6 +4,7 @@ export class Ahorcado {
   public erroresCometidos: number;
   public letrasErroneas: string[];
   public letrasCorrectas: string[];
+  public score: number;
 
   constructor(puntaje: string, erroresPosibles: number) {
     this.palabra = puntaje;
@@ -11,6 +12,7 @@ export class Ahorcado {
     this.erroresCometidos = 0;
     this.letrasErroneas = [];
     this.letrasCorrectas = [];
+    this.score = 0;
   }
 
   arriesgarPalabra(palabraElegida: string): string {
@@ -31,9 +33,12 @@ export class Ahorcado {
     if (this.letrasCorrectas.includes(letraElegida) || this.letrasErroneas.includes(letraElegida)) {
       return "Letra ya utilizada.";
     }
-
+    
     if (this.palabra.includes(letraElegida)) {
       this.letrasCorrectas.push(letraElegida);
+      if (this.getPalabraAdivinada()) {
+        return 'GANASTE';
+      }
       return true;
     } else {
       this.letrasErroneas.push(letraElegida);
@@ -43,6 +48,10 @@ export class Ahorcado {
       }
       return false;
     }
+  }
+
+  getPalabraAdivinada(): boolean {
+    return this.palabra.split('').every(letter => this.letrasCorrectas.includes(letter));
   }
 
   getErrores(): number {
@@ -63,5 +72,9 @@ export class Ahorcado {
 
   returnVidasRestantes(): number {
     return this.erroresPosibles - this.erroresCometidos;
+  }
+
+  returnScore(): number {
+    return this.score
   }
 }
