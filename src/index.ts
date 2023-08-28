@@ -274,7 +274,7 @@ function updateUI() {
 function nameInput() {
   Swal.fire({
     title: 'Ingrese su nombre',
-    html: `<input type="text" id="login" class="swal2-input" placeholder="Username">`,
+    html: `<input type="text" id="login" class="swal2-input">`,
     confirmButtonText: 'Ingresar',
     focusConfirm: false,
     allowOutsideClick: false,
