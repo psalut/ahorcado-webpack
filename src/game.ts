@@ -106,6 +106,7 @@ export class Ahorcado {
   }
 
   getScores() {
-    return this.scores;
+    let sorted = this.scores.sort((a, b) => b.score - a.score);
+    return sorted;
   }
 }
