@@ -38,6 +38,7 @@ jobs:
         
 
       - name: Deploy to production
+        uses: actions/checkout@v3
         with: 
-          clean: false
+          clean: 'false'
         run: npm run build
