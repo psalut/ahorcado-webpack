@@ -44,3 +44,6 @@ jobs:
       
       - name: Build prod mode
         run: npm run build
+
+      - name: Acceptance tests
+        run: npm run cypress:run

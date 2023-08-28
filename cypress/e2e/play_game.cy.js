@@ -5,6 +5,11 @@ describe('Main menu', () => {
     cy.contains('AHORCADO - GROUP 4');
 
     cy.get("#playButton").click();
-    cy.contains('SCORE');
+    cy.get("#login").type("NombreGenerico");
+
+    cy.get(".swal2-confirm").click();
+
+    cy.get("#guess-input").type("a");
+    cy.get("#guess-button").click();
   })
 })
