@@ -99,7 +99,6 @@ export class Ahorcado {
     this.letrasErroneas = [];
     this.letrasCorrectas = [];
     this.seleccionaPalabra();
-    this.score = 0;
   }
 
   setScore(name:string) {
@@ -109,5 +108,9 @@ export class Ahorcado {
   getScores() {
     let sorted = this.scores.sort((a, b) => b.score - a.score);
     return sorted;
+  }
+
+  cleanScore() {
+    this.score = 0;
   }
 }

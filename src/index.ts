@@ -110,6 +110,7 @@ function processGuess() {
 
       limpiarHorca();
       ahorcado.restartGame();
+      ahorcado.cleanScore();
 
     // Ganó
     } else {
