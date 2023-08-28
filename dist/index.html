@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHORCADO - GROUP 4</title>
+</head>
+<body>
+  <h4 class="mainTitle">AHORCADO - GROUP 4</h4>
+  <div class="gradient-border">
+
+    <div class="container" id="mainMenuContainer">
+      <h5 class="subTitle">MAIN MENU</h5>
+      <div class="mainMenuButtons">
+        <button id="playButton"><span>Play</span></button>
+        <button id="scoreButton"><span>Score</span></button>
+        <button id="aboutUsButton"><span>About us</span></button>
+      </div>
+    </div>
+
+    <div class="container" id="playContainer">
+      <h5 class="subTitle">GAME</h5>
+      <div id="game-container">
+        <!-- <h3>Adivine la palabra</h3> -->
+        <canvas id="canvas" width="300" height="400"></canvas>
+        <div id="word-display"></div>
+        <p>Letras erradas: <a id="guesses-display"></a></p>
+        <p>Vidas restantes: <a id="remaining-lives"></a></p>
+        <form id="guess-form">
+          <input type="text" id="guess-input"/>
+          <button type="submit"><span>Adivinar</span></button>
+        </form>
+      </div>
+      <p>Puntaje: <a id="score"></a></p>
+
+      <!-- <button class="backButton"><span>BACK</span></button> -->
+    </div>
+
+    <div class="container" id="scoreContainer">
+      <h5 class="subTitle">SCORE</h5>
+      <!-- TODO cargar score real -->
+      <ul>
+        <li><span>Pato .......... 120pts</span></li>
+        <li><span>Lucas .......... 110pts</span></li>
+        <li><span>Pablo .......... 100pts</span></li>
+        <li><span>Pato .......... 80pts</span></li>
+        <li><span>Lucas .......... 60pts</span></li>
+        <li><span>Pablo .......... 40pts</span></li>
+        <li><span>Pato .......... 10pts</span></li>
+      </ul>
+      <button class="backButton"><span>BACK</span></button>
+    </div>
+
+    <div class="container" id="aboutUsContainer">
+      <h5 class="subTitle">ABOUT US</h5>
+      <div class="aboutUsDiv">
+        <ul>
+          <h6 style="margin-bottom: 10px">GROUP MEMBERS</h6>
+          <li>LUCAS GUERRINI - LEG: 43.882</li>
+          <li>PABLO SALUT - LEG: 43.086</li>
+        </ul>
+        <ul style="margin-top: 1em;">
+          <h6 style="margin-bottom: 10px">UNIVERSIDAD TECNOLÓGICA NACIONAL</h6>
+          <li>FACULTAD REGIONAL ROSARIO</li>
+          <li>METODOLOGÍAS ÁGILES</li>
+        </ul>
+      </div>
+      <button class="backButton"><span>BACK</span></button>
+    </div>
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+</html>
