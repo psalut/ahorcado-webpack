@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+.swal2-confirm {
+  color: white !important;
+  
+}
+
+.swal2-title {
+  color: white !important;
+}
+
+.swal2-popup {
+  background-color: #444;
+  font-family: 'Poppins', sans-serif;
+}
+
+body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions > button.swal2-confirm.swal2-styled::before {
+  background: none;
+}
+
+#login {
+  color: white;
+}
 /* CONTAINERS AND BORDER */
 body {
   display: flex;
@@ -179,18 +200,4 @@ button span {
 
 #word-display {
   font-size: 40px;
-}
-
-.swal2-confirm {
-  color: white !important;
-  
-}
-
-.swal2-title {
-  color: white !important;
-}
-
-.swal2-popup {
-  background-color: #444;
-  font-family: 'Poppins', sans-serif;
 }

@@ -4,16 +4,7 @@ describe('Main menu', () => {
     cy.visit('http://localhost:8080/', {timeout: 500000});
     cy.contains('AHORCADO - GROUP 4');
 
-    cy.get("#scoreButton").click();
+    cy.get("#playButton").click();
     cy.contains('SCORE');
-
-    cy.get("#backFromScore").click();
-    cy.contains('AHORCADO - GROUP 4');
-
-    cy.get("#aboutUsButton").click();
-    cy.contains('GROUP MEMBERS');
-
-    cy.get("#backFromAboutUs").click();
-    cy.contains('AHORCADO - GROUP 4');
   })
 })

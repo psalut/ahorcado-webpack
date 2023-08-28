@@ -5,6 +5,7 @@ export class Ahorcado {
   public letrasErroneas: string[];
   public letrasCorrectas: string[];
   public score: number;
+  public scores:any[] = [];
 
   public palabrasAdivinadas: string[];
   public palabrasRestantes: string[] = ["pintura","pentagrama","frutilla","verdura","anillo","siesta","misterio","hoja","tetera","abeja","cargo","silueta","transportador","garrapata","esqueleto","paella","municipio"];
@@ -98,5 +99,13 @@ export class Ahorcado {
     this.letrasErroneas = [];
     this.letrasCorrectas = [];
     this.seleccionaPalabra();
+  }
+
+  setScore(name:string) {
+    this.scores.push({nombre: name, score: this.score});
+  }
+
+  getScores() {
+    return this.scores;
   }
 }

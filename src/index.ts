@@ -11,16 +11,48 @@ const scoreButton = document.getElementById('scoreButton') as HTMLElement;
 const aboutUsContainer = document.getElementById('aboutUsContainer') as HTMLElement;
 const aboutUsButton = document.getElementById('aboutUsButton') as HTMLElement;
 const backButtons = document.querySelectorAll(".backButton");
+const wordDisplay = document.getElementById('word-display') as HTMLElement;
+const guessesDisplay = document.getElementById('guesses-display') as HTMLElement;
+const remainingLives = document.getElementById('remaining-lives') as HTMLElement;
+const scoreDisplay = document.getElementById('score-display') as HTMLElement;
+const guessForm = document.getElementById('guess-form') as HTMLFormElement;
+const guessInput = document.getElementById('guess-input') as HTMLInputElement;
 
+var playerName:string;
+const ahorcado = new Ahorcado(null);
+var palabra = "";
 
 // MAIN MENU
 playButton.addEventListener('click', function() {
   mainMenuContainer.style.display = 'none';
   playContainer.style.display = 'flex';
+  nameInput();
+
+  dibujarHorca();
+  palabra = ahorcado.getPalabra();
+  console.log(palabra);
+  const guionesDibujados = dibujarGuiones(palabra, []);
+  wordDisplay.textContent = guionesDibujados;
 });
+
 scoreButton.addEventListener('click', function() {
   mainMenuContainer.style.display = 'none';
   scoreContainer.style.display = 'flex';
+  let scores = ahorcado.getScores();
+
+  const ul = document.getElementById("scoreList");
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+  
+  scores.forEach(element => {
+    const nuevoLi = document.createElement("li");
+    nuevoLi.textContent = element.nombre + ' --------- ' + element.score;
+
+    ul.appendChild(nuevoLi);
+  });
+
+  console.log(scores);
 });
 aboutUsButton.addEventListener('click', function() {
   mainMenuContainer.style.display = 'none';
@@ -36,21 +68,9 @@ backButtons.forEach((button) => {
   });
 });
 
-const wordDisplay = document.getElementById('word-display') as HTMLElement;
-const guessesDisplay = document.getElementById('guesses-display') as HTMLElement;
-const remainingLives = document.getElementById('remaining-lives') as HTMLElement;
-const scoreDisplay = document.getElementById('score-display') as HTMLElement;
-const guessForm = document.getElementById('guess-form') as HTMLFormElement;
-const guessInput = document.getElementById('guess-input') as HTMLInputElement;
 
-dibujarHorca();
 
-const ahorcado = new Ahorcado(null);
-var palabra = ahorcado.getPalabra();
-console.log(palabra);
 
-const guionesDibujados = dibujarGuiones(palabra, []);
-wordDisplay.textContent = guionesDibujados;
 
 // Función para procesar la adivinanza
 function processGuess() {
@@ -79,9 +99,18 @@ function processGuess() {
         timer: 1500,
         showConfirmButton: false,
         timerProgressBar: true,
+        allowOutsideClick: false
       });
 
-    // TODO sumar los puntos que hizo al historico 
+      ahorcado.setScore(playerName);
+
+      // volver al menu inicial
+      playContainer.style.display = 'none';
+      mainMenuContainer.style.display = 'flex';
+
+      limpiarHorca();
+      ahorcado.restartGame();
+
     // Ganó
     } else {
       const guionesDibujados = dibujarGuiones(palabra, ahorcado.returnLetrasCorrectas());
@@ -92,6 +121,7 @@ function processGuess() {
         timer: 1500,
         showConfirmButton: false,
         timerProgressBar: true,
+        allowOutsideClick: false
       });
 
       if (resultado == "GANASTE") {
@@ -239,4 +269,22 @@ function updateUI() {
   scoreDisplay.textContent = ahorcado.returnScore().toString();
   const guionesDibujados = dibujarGuiones(palabra, ahorcado.returnLetrasCorrectas());
   wordDisplay.textContent = guionesDibujados;
+}
+
+function nameInput() {
+  Swal.fire({
+    title: 'Ingrese su nombre',
+    html: `<input type="text" id="login" class="swal2-input" placeholder="Username">`,
+    confirmButtonText: 'Ingresar',
+    focusConfirm: false,
+    allowOutsideClick: false,
+    preConfirm: () => {
+      const login = (Swal.getPopup().querySelector('#login') as HTMLInputElement).value
+      if (!login) {
+        Swal.showValidationMessage(`Por favor ingrese su nombre`)
+      } else {
+        playerName = login;
+      }
+    }
+  });
 }
