@@ -1,20 +1,6 @@
 import 'jasmine';
 import { Ahorcado } from "../src/game";
 
-describe("arriesgar palabra", () => {
-
-  it("should return GANASTE", () => {
-    let game = new Ahorcado("pelota", 6);
-    expect(game.arriesgarPalabra("pelota")).toBe("GANASTE");
-  });
-
-  it("should return PERDISTE", () => {
-    let game = new Ahorcado("pelota", 6);
-    expect(game.arriesgarPalabra("paleta")).toBe("PERDISTE");
-  });
-  
-});
-
 describe("arriesgar letra", () => {
 
   it("should return true", () => {

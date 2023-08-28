@@ -6,21 +6,32 @@ export class Ahorcado {
   public letrasCorrectas: string[];
   public score: number;
 
-  constructor(puntaje: string, erroresPosibles: number) {
-    this.palabra = puntaje;
-    this.erroresPosibles = erroresPosibles;
+  public palabrasAdivinadas: string[];
+  public palabrasRestantes: string[] = ["pintura","pentagrama","frutilla","verdura","anillo","siesta","misterio","hoja","tetera","abeja","cargo","silueta","transportador","garrapata","esqueleto","paella","municipio"];
+
+  constructor() {
+    this.palabra = "";
+    this.erroresPosibles = 6;
     this.erroresCometidos = 0;
     this.letrasErroneas = [];
     this.letrasCorrectas = [];
     this.score = 0;
+
+    this.seleccionaPalabra();
   }
 
-  arriesgarPalabra(palabraElegida: string): string {
-    if (palabraElegida === this.palabra) {
-      return "GANASTE";
-    } else {
-      return "PERDISTE";
-    }
+  seleccionaPalabra() {
+    let min = Math.ceil(0);
+    let max = Math.floor(this.palabrasRestantes.length-1);
+    let pos = Math.floor(Math.random() * (max - min + 1) + min);
+    let elegida = this.palabrasRestantes[pos];
+
+    this.palabra = elegida;
+    this.palabrasRestantes.splice(pos, 1);
+  }
+
+  getPalabra() {
+    return this.palabra;
   }
 
   arriesgarLetra(letraElegida: string): boolean | string {
@@ -37,6 +48,7 @@ export class Ahorcado {
     if (this.palabra.includes(letraElegida)) {
       this.letrasCorrectas.push(letraElegida);
       if (this.getPalabraAdivinada()) {
+        this.score = this.score + 10;
         return 'GANASTE';
       }
       return true;
@@ -76,5 +88,13 @@ export class Ahorcado {
 
   returnScore(): number {
     return this.score
+  }
+
+  restartGame() {
+    this.palabra = "";
+    this.erroresCometidos = 0;
+    this.letrasErroneas = [];
+    this.letrasCorrectas = [];
+    this.seleccionaPalabra();
   }
 }
