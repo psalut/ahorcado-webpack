@@ -99,6 +99,7 @@ export class Ahorcado {
     this.letrasErroneas = [];
     this.letrasCorrectas = [];
     this.seleccionaPalabra();
+    this.score = 0;
   }
 
   setScore(name:string) {
