@@ -45,7 +45,7 @@ const guessInput = document.getElementById('guess-input') as HTMLInputElement;
 
 dibujarHorca();
 
-const ahorcado = new Ahorcado();
+const ahorcado = new Ahorcado(null);
 var palabra = ahorcado.getPalabra();
 console.log(palabra);
 

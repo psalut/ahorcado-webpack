@@ -9,15 +9,17 @@ export class Ahorcado {
   public palabrasAdivinadas: string[];
   public palabrasRestantes: string[] = ["pintura","pentagrama","frutilla","verdura","anillo","siesta","misterio","hoja","tetera","abeja","cargo","silueta","transportador","garrapata","esqueleto","paella","municipio"];
 
-  constructor() {
-    this.palabra = "";
+  constructor(palabra:string | null) {
+    if (palabra) {
+      this.palabra = palabra;
+    } else {
+      this.seleccionaPalabra();
+    }
     this.erroresPosibles = 6;
     this.erroresCometidos = 0;
     this.letrasErroneas = [];
     this.letrasCorrectas = [];
     this.score = 0;
-
-    this.seleccionaPalabra();
   }
 
   seleccionaPalabra() {
