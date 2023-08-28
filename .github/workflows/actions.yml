@@ -35,8 +35,7 @@ jobs:
 
       - name: Run coverage test
         run: npm run coverage
+        
 
-      # - name: Deploy to production
-      #   run: |
-      #     # Aquí puedes agregar comandos para el despliegue a tu entorno de producción
-      #     # Ejemplo: npm run deploy-prod
+      - name: Deploy to production
+        run: npm run build
