@@ -31,6 +31,9 @@ playButton.addEventListener('click', function() {
   dibujarHorca();
   palabra = ahorcado.getPalabra();
   console.log(palabra);
+  const hidden = document.getElementById('hidden') as HTMLElement;
+  hidden.textContent = palabra;
+
   const guionesDibujados = dibujarGuiones(palabra, []);
   wordDisplay.textContent = guionesDibujados;
 });
@@ -101,6 +104,7 @@ function processGuess() {
         timerProgressBar: true,
         allowOutsideClick: false
       });
+      console.log(resultado);
 
       ahorcado.setScore(playerName);
 
@@ -129,7 +133,6 @@ function processGuess() {
         limpiarHorca();
         ahorcado.restartGame();
         palabra = ahorcado.getPalabra();
-        console.log(palabra);
       }
     }
   }

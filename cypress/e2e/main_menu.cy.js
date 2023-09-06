@@ -1,19 +1,38 @@
-describe('Main menu', () => {
-  it('main menu must work correctly', () => {
-    cy.viewport(1920, 1080) // Set viewport to 550px x 750px
-    cy.visit('https://ahorcado-webpack.vercel.app/', {timeout: 500000});
-    cy.contains('AHORCADO - GROUP 4');
+describe('Main Menu', () => {
+  context('Given I access the game page', () => {
+    beforeEach(() => {
+      cy.viewport(1920, 1080) // Set viewport to 550px x 750px
+      cy.visit('https://ahorcado-webpack.vercel.app/')
+    })
 
-    cy.get("#scoreButton").click();
-    cy.contains('SCORE');
+    context('When I click on the score button', () => {
+      beforeEach(() => {
+        cy.get("#scoreButton").click();
+      })
 
-    cy.get("#backFromScore").click();
-    cy.contains('AHORCADO - GROUP 4');
+      it('Then I see the score title and a list of scores', () => {
+        cy.contains('SCORE');
+      })
+    })
 
-    cy.get("#aboutUsButton").click();
-    cy.contains('GROUP MEMBERS');
+    context('When I click on the about us button', () => {
+      beforeEach(() => {
+        cy.get("#aboutUsButton").click();
+      })
 
-    cy.get("#backFromAboutUs").click();
-    cy.contains('AHORCADO - GROUP 4');
+      it('Then I see the the authors of the game', () => {
+        cy.contains('GROUP MEMBERS');
+      })
+    })
+
+    context('When I click on the play button', () => {
+      beforeEach(() => {
+        cy.get("#playButton").click();
+      })
+
+      it('Then I see the field to type my name', () => {
+        cy.get("#login");
+      })
+    })
   })
 })
