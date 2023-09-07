@@ -31,8 +31,6 @@ playButton.addEventListener('click', function() {
   dibujarHorca();
   palabra = ahorcado.getPalabra();
   console.log(palabra);
-  const hidden = document.getElementById('hidden') as HTMLElement;
-  hidden.textContent = palabra;
 
   const guionesDibujados = dibujarGuiones(palabra, []);
   wordDisplay.textContent = guionesDibujados;
