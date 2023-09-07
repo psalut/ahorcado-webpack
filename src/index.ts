@@ -1,4 +1,4 @@
-import "./styles/index.css";
+import './styles/index.css';
 import { Ahorcado } from './game';
 import Swal from 'sweetalert2';
 
@@ -10,7 +10,7 @@ const scoreContainer = document.getElementById('scoreContainer') as HTMLElement;
 const scoreButton = document.getElementById('scoreButton') as HTMLElement;
 const aboutUsContainer = document.getElementById('aboutUsContainer') as HTMLElement;
 const aboutUsButton = document.getElementById('aboutUsButton') as HTMLElement;
-const backButtons = document.querySelectorAll(".backButton");
+const backButtons = document.querySelectorAll('.backButton');
 const wordDisplay = document.getElementById('word-display') as HTMLElement;
 const guessesDisplay = document.getElementById('guesses-display') as HTMLElement;
 const remainingLives = document.getElementById('remaining-lives') as HTMLElement;
@@ -18,9 +18,9 @@ const scoreDisplay = document.getElementById('score-display') as HTMLElement;
 const guessForm = document.getElementById('guess-form') as HTMLFormElement;
 const guessInput = document.getElementById('guess-input') as HTMLInputElement;
 
-var playerName:string;
+let playerName:string;
 const ahorcado = new Ahorcado(null);
-var palabra = "";
+let palabra = '';
 
 // MAIN MENU
 playButton.addEventListener('click', function() {
@@ -30,7 +30,6 @@ playButton.addEventListener('click', function() {
 
   dibujarHorca();
   palabra = ahorcado.getPalabra();
-  console.log(palabra);
 
   const guionesDibujados = dibujarGuiones(palabra, []);
   wordDisplay.textContent = guionesDibujados;
@@ -39,21 +38,20 @@ playButton.addEventListener('click', function() {
 scoreButton.addEventListener('click', function() {
   mainMenuContainer.style.display = 'none';
   scoreContainer.style.display = 'flex';
-  let scores = ahorcado.getScores();
+  const scores = ahorcado.getScores();
 
-  const ul = document.getElementById("scoreList");
+  const ul = document.getElementById('scoreList');
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
   }
   
   scores.forEach(element => {
-    const nuevoLi = document.createElement("li");
+    const nuevoLi = document.createElement('li');
     nuevoLi.textContent = element.nombre + ' --------- ' + element.score;
 
     ul.appendChild(nuevoLi);
   });
 
-  console.log(scores);
 });
 aboutUsButton.addEventListener('click', function() {
   mainMenuContainer.style.display = 'none';
@@ -61,7 +59,7 @@ aboutUsButton.addEventListener('click', function() {
 });
 
 backButtons.forEach((button) => {
-  button.addEventListener("click", function() {
+  button.addEventListener('click', function() {
     playContainer.style.display = 'none';
     scoreContainer.style.display = 'none';
     aboutUsContainer.style.display = 'none';
@@ -92,7 +90,7 @@ function processGuess() {
     }
   } else {
     // Perdió
-    if (resultado == "PERDISTE") {
+    if (resultado == 'PERDISTE') {
       dibujarMuerto();
 
       Swal.fire({
@@ -100,9 +98,8 @@ function processGuess() {
         timer: 1500,
         showConfirmButton: false,
         timerProgressBar: true,
-        allowOutsideClick: false
+        allowOutsideClick: false,
       });
-      console.log(resultado);
 
       ahorcado.setScore(playerName);
 
@@ -124,10 +121,10 @@ function processGuess() {
         timer: 1500,
         showConfirmButton: false,
         timerProgressBar: true,
-        allowOutsideClick: false
+        allowOutsideClick: false,
       });
 
-      if (resultado == "GANASTE") {
+      if (resultado == 'GANASTE') {
         limpiarHorca();
         ahorcado.restartGame();
         palabra = ahorcado.getPalabra();
@@ -191,38 +188,38 @@ function dibujarPartes() {
   ctx.strokeStyle = 'white';
 
   switch (ahorcado.returnVidasRestantes()) {
-    case 5:
-      // CABEZA
-      ctx.moveTo(220, 140);
-      ctx.arc(200, 140, 20, 0, Math.PI * 2, true); // Círculo externo
-      ctx.stroke();
+  case 5:
+    // CABEZA
+    ctx.moveTo(220, 140);
+    ctx.arc(200, 140, 20, 0, Math.PI * 2, true); // Círculo externo
+    ctx.stroke();
     break;
-    case 4:
-      // TORSO
-      ctx.moveTo(200, 160);
-      ctx.lineTo(200, 240);
-      ctx.stroke();
+  case 4:
+    // TORSO
+    ctx.moveTo(200, 160);
+    ctx.lineTo(200, 240);
+    ctx.stroke();
     break;
-    case 3:
-      // BRAZO DER
-      ctx.moveTo(200, 170);
-      ctx.lineTo(230, 220);
-      ctx.stroke();
+  case 3:
+    // BRAZO DER
+    ctx.moveTo(200, 170);
+    ctx.lineTo(230, 220);
+    ctx.stroke();
     break;
-    case 2:
-      // BRAZO IZQ
-      ctx.moveTo(200, 170);
-      ctx.lineTo(170, 220);
-      ctx.stroke();
+  case 2:
+    // BRAZO IZQ
+    ctx.moveTo(200, 170);
+    ctx.lineTo(170, 220);
+    ctx.stroke();
     break;
-    case 1:
-      // PIERNA IZQ
-      ctx.moveTo(200, 240);
-      ctx.lineTo(230, 280);
-      ctx.stroke();
+  case 1:
+    // PIERNA IZQ
+    ctx.moveTo(200, 240);
+    ctx.lineTo(230, 280);
+    ctx.stroke();
     break;
-    default:
-      break;
+  default:
+    break;
   }
 }
 
@@ -276,17 +273,17 @@ function updateUI() {
 function nameInput() {
   Swal.fire({
     title: 'Ingrese su nombre',
-    html: `<input type="text" id="login" class="swal2-input">`,
+    html: '<input type="text" id="login" class="swal2-input">',
     confirmButtonText: 'Ingresar',
     focusConfirm: false,
     allowOutsideClick: false,
     preConfirm: () => {
-      const login = (Swal.getPopup().querySelector('#login') as HTMLInputElement).value
+      const login = (Swal.getPopup().querySelector('#login') as HTMLInputElement).value;
       if (!login) {
-        Swal.showValidationMessage(`Por favor ingrese su nombre`)
+        Swal.showValidationMessage('Por favor ingrese su nombre');
       } else {
         playerName = login;
       }
-    }
+    },
   });
 }
