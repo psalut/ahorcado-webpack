@@ -13,7 +13,8 @@
     "coverage": "nyc npm run test && nyc report --reporter=html",
     "acc-test": "cypress open",
     "cypress:run": "cypress run",
-    "eslint": "npx eslint src/game.ts"
+    "eslint": "yarn eslint src/game.ts",
+    "lint": "npx eslint src/game.ts"
   },
   "keywords": [],
   "author": "",
