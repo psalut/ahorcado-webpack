@@ -12,7 +12,8 @@
     "test:fancy": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json",
     "coverage": "nyc npm run test && nyc report --reporter=html",
     "acc-test": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "eslint": "npx eslint src/game.ts"
   },
   "keywords": [],
   "author": "",

@@ -24,9 +24,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build TypeScript
-        run: npm run build
-
       - name: Run test
         run: npm run test
 
@@ -35,8 +32,10 @@ jobs:
 
       - name: Run coverage test
         run: npm run coverage
-        
 
+      - name: Run static analysis
+        run: npm run eslint
+        
       - name: Prod settings
         uses: actions/checkout@v3
         with: 
@@ -44,6 +43,12 @@ jobs:
       
       - name: Build prod mode
         run: npm run build
+
+      - name: Update dist folder
+        run: |
+          rm -rf dist
+          mv newdist dist
+        if: success()
 
       - name: Acceptance tests
         run: npm run cypress:run
